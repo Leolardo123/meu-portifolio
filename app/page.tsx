@@ -21,8 +21,6 @@ const contacts = {
 
 // -------------------- IMAGE CONFIG
 const contactIconSize = 50;
-const techIconSize = 50;
-const projectImageSize = 100;
 
 // ------------------- TECHNOLOGIES
 const technologies = {
@@ -92,7 +90,7 @@ export default function Home() {
     <div>
       <main>
         <Header />
-        <div id="content-main">
+        <div id="content-main" className="px-25 lg:px-75.5">
           {/* INTRODUÇÃO */}
           <section id="introduction">
             <h1> Introdução </h1>
@@ -113,8 +111,9 @@ export default function Home() {
               Etiam blandit eros nulla, eu pulvinar sem euismod a.
             </p>
           </section>
+          <div className="separator mt-6.5"></div>
           {/* TECNOLOGIAS */}
-          <section id="technology" className="bg-primary">
+          <section id="technology">
             <div id="technology-description">
               <h1>Tecnologias</h1>
               <p>
@@ -129,8 +128,12 @@ export default function Home() {
                 quam lobortis quis.
               </p>
             </div>
-            <div id="technology-details" className="bg-secondary-2">
-              <div id="technology-list" className="grid grid-cols-1 sm:grid-cols-2">
+            <div className="separator mt-6.5"></div>
+            <div id="technology-details">
+              <div
+                id="technology-list"
+                className="grid grid-cols-1 sm:grid-cols-2"
+              >
                 {Object.entries(technologies).map(([keyTech, ratingValue]) => {
                   const TechIcon = techIcons[keyTech as keyof typeof techIcons];
                   return (
@@ -153,20 +156,15 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <div className="separator mt-6.5"></div>
           {/* PROJETOS */}
           <section id="projects">
             {/* PROJETOS PESSOAIS*/}
             <div id="projects-display">
-              <div className="projects-made grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="projects-made grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: 8 }).map((_, index) => {
                   const project = randomizeProject();
-                  return (
-                    <Project
-                      key={index}
-                      imageSize={projectImageSize}
-                      project={project}
-                    />
-                  );
+                  return <Project key={index} project={project} />;
                 })}
               </div>
               <div className="projects-participated">
@@ -174,6 +172,7 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <div className="separator p-6.5"></div>
           {/* CONTATO */}
           <section id="contacts">
             {/* TODO::MAKE CLICKABLE AGAIN */}

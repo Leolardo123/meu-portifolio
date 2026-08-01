@@ -17,6 +17,9 @@
   --color-secondary-1: #F05A28;
   --color-secondary-2: #36454F;
   --color-border-1: #C0C0C0;
+  --font-dark: #000000;
+  --font-light: #FFFFFF;
+  --font-grey: #101010;
 }
 
 [data-theme='dark-theme'] {
@@ -39,6 +42,6 @@
 body {
   background: var(--color-theme);
   color: var(--color-font);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Firacode;
 }
 
