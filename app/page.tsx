@@ -45,7 +45,8 @@ const randomizeProject = () => {
 
   const techsSelected = Array.from({ length: techRandAmount }, () => {
     const pos = Math.round(Math.random() * (techsUnselected.length - 1));
-    return techsUnselected[pos];
+    const sel = techsUnselected.splice(pos, 1);
+    return sel;
   });
 
   return {
