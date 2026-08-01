@@ -4,4 +4,5 @@ export interface ProjectDTO {
   categories: string[];
   description: string;
   image: string;
+  isOwnProject: boolean;
 }

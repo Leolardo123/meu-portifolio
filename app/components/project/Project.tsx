@@ -18,9 +18,10 @@ export default function Project(props: ProjectProps) {
         alt={project.name}
       />
       <div className="card-project-description">
-        <p className="categories-project"></p>
+        <p className="categories-project">{project.categories}</p>
         <p className="technologies-project">{project.techs.join(";")}</p>
         <p>{project.description}</p>
+        <a href="https://github.com/Leolardo123">Ver repositório github</a>
       </div>
     </div>
   );

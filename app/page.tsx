@@ -7,6 +7,11 @@ import Image from "next/image";
 import Header from "./components/header/Header";
 import Project from "./components/project/Project";
 import { ProjectDTO } from './components/project/Project.interface';
+import { ComponentType, SVGProps } from "react";
+import JavaIcon from "./icons/JavaIcon";
+import JavascriptIcon from "./icons/JavascriptIcon";
+import PostgresqlIcon from "./icons/PostgresqlIcon";
+import SpringIcon from "./icons/SpringIcon";
 
 const contacts = {
   linkedin:
@@ -21,19 +26,28 @@ const projectImageSize = 100;
 
 // ------------------- TECHNOLOGIES
 const technologies = {
-  javascript: 4,
-  postgresql: 4,
-  nodejs: 4,
-  reactjs: 4,
-  java: 3,
-  nextjs: 2,
+  Javascript: 4,
+  PostgreSQL: 4,
+  "Node.Js": 4,
+  "React(Web)": 4,
+  Java: 3,
+  Spring: 1,
+  "Next.js": 2,
   "C#": 1,
-  dotnet: 1,
-  reactnative: 1,
+  ".NET": 1,
+  ReactNative: 1,
 };
 
-// ------------------- HELPERS
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
+const techIcons = {
+  Java: JavaIcon,
+  Javascript: JavascriptIcon,
+  PostgreSQL: PostgresqlIcon,
+  Spring: SpringIcon
+} as { [key in keyof typeof technologies]: IconComponent };
+
+// ------------------- HELPERS
 
 const pickNoRepeat = (list: string[], amount: number) => {
   const copyOfList = [...list];
@@ -68,6 +82,7 @@ const randomizeProject = () => {
                         varius, mauris libero viverra velit, et placerat dui
                         dolor vel ligula.`,
     image: `https://picsum.photos/300/300?random=${imgRand}`,
+    isOwnProject: true,
   } as ProjectDTO
 }
 
@@ -115,14 +130,23 @@ export default function Home() {
               </p>
             </div>
             <div id="technology-details" className="bg-secondary-2">
-              <div id="technology-list">
+              <div id="technology-list" className="grid grid-cols-1 sm:grid-cols-2">
                 {Object.entries(technologies).map(([keyTech, ratingValue]) => {
+                  const TechIcon = techIcons[keyTech as keyof typeof techIcons];
                   return (
                     <div
                       key={`technology-rating-${keyTech}`}
-                      className="technology-item-rating"
+                      className="technology-item-rating flex flex-col"
                     >
-                      <RatingRepeat rating={ratingValue} label={keyTech} />
+                      <div className="flex items-center gap-0.5">
+                        {TechIcon && <TechIcon width={40} height={40} />}
+                        <p>{keyTech}</p>
+                      </div>
+                      <RatingRepeat
+                        rating={ratingValue}
+                        width={40}
+                        height={40}
+                      />
                     </div>
                   );
                 })}
