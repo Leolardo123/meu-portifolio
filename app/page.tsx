@@ -35,7 +35,7 @@ export default function Home() {
         <Header />
         <div id="content-main">
           {/* INTRODUÇÃO */}
-          <section id="introduction" className="bg-theme">
+          <section id="introduction">
             <h1> Introdução </h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -55,7 +55,7 @@ export default function Home() {
             </p>
           </section>
           {/* TECNOLOGIAS */}
-          <section id="technology">
+          <section id="technology" className="bg-primary">
             <div id="technology-description">
               <h1>Tecnologias</h1>
               <p>
@@ -70,7 +70,7 @@ export default function Home() {
                 quam lobortis quis.
               </p>
             </div>
-            <div id="technology-details">
+            <div id="technology-details" className="bg-secondary-2">
               <div id="technology-list">
                 {Object.entries(technologies).map(([keyTech, ratingValue]) => {
                   return (

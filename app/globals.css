@@ -13,19 +13,19 @@
 }
 
 @theme {
-  --color-secondary-1: #FF9F1C;
-  --color-secondary-2: #F05A28;
-  --color-secondary-3: #36454F;
+  --color-primary: #FF9F1C;
+  --color-secondary-1: #F05A28;
+  --color-secondary-2: #36454F;
   --color-border-1: #C0C0C0;
 }
 
 [data-theme='dark-theme'] {
-  --color-primary: #000000;
+  --color-theme: #000000;
   --color-font: #FFFFFF;
 }
 
 [data-theme='light-theme'] {
-  --color-primary: #FFFFFF;
+  --color-theme: #FFFFFF;
   --color-font: #000000;
 }
 
@@ -37,7 +37,7 @@
 }
 
 body {
-  background: var(--color-primary);
+  background: var(--color-theme);
   color: var(--color-font);
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -38,7 +38,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-between h-17.75 p-10 gap-4 sticky top-0">
+    <header className="bg-(--color-theme) flex items-center justify-between h-17.75 p-10 gap-4 sticky top-0">
       <span className="uppercase text-[19px] font-bold">Leoferstos</span>
       <nav className="flex gap-7.5">
         {links.map((link, index) => (
