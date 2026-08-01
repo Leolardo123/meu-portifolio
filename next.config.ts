@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/badge/**', // Allows all paths under the domain
       },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos'
+      }
     ],
   },
 };

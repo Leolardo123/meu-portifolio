@@ -6,6 +6,7 @@ import LinkedinIcon from "./icons/LinkedinIcon";
 import GithubIcon from "./icons/GithubIcon";
 import { Header } from "./components/header/Header";
 import { useState } from "react";
+import Image from "next/image";
 
 const contacts = {
   linkedin:
@@ -13,20 +14,51 @@ const contacts = {
   github: "https://github.com/Leolardo123",
 };
 
-// -------------------- ICON CONFIG
+// -------------------- IMAGE CONFIG
 const contactIconSize = 50;
 const techIconSize = 50;
-const projectIconSize = 100;
+const projectImageSize = 100;
 
 // ------------------- TECHNOLOGIES
 const technologies = {
   javascript: 4,
   postgresql: 4,
+  nodejs: 4,
+  reactjs: 4,
   java: 3,
   nextjs: 2,
   "C#": 1,
   dotnet: 1,
+  reactnative: 1,
 };
+
+// ------------------ PROJECTS
+
+const projects = [];
+const filtersUn = ['backend','frontend','fullstack'];
+
+const randomizeProject = () => {
+  const imgRand = Math.round(Math.random() * 10);
+  const techRandAmount = Math.round(Math.random() * 3) + 1; // de 1 a 4 itens
+  const techsUnselected = Object.keys(technologies);
+  const category = Math.round(Math.random() * 3);
+
+  const techsSelected = Array.from({ length: techRandAmount }, () => {
+    const pos = Math.round(Math.random() * (techsUnselected.length - 1));
+    return techsUnselected[pos];
+  });
+
+  return {
+    name: "Placeholder",
+    techs: techsSelected,
+    categories: filtersUn[category],
+    description: `Donec odio magna, lobortis id faucibus sit amet,
+                        condimentum in odio. Maecenas porta, nibh eget facilisis
+                        varius, mauris libero viverra velit, et placerat dui
+                        dolor vel ligula.`,
+    image: `https://picsum.photos/300/300?random=${imgRand}`,
+  }
+}
 
 export default function Home() {
   return (
@@ -88,23 +120,49 @@ export default function Home() {
           {/* PROJETOS */}
           <section id="projects">
             {/* PROJETOS PESSOAIS*/}
-            <div id="projects-display">
-              {Array.from({ length: 8 }, (_, index) => {
+            <div 
+              id="projects-display"
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            >
+              {/* {projects.map((project, index) => {
                 return (
                   <div
                     key={`technology-card-${index}`}
                     className="card-project"
                   >
-                    <PlaceholderIcon
-                      width={projectIconSize}
-                      height={projectIconSize}
+                    <Image
+                      src={project.image}
+                      width={projectImageSize}
+                      height={projectImageSize}
+                      alt={project.name}
                     />
                     <div className="card-project-description">
                       <p>
-                        Donec odio magna, lobortis id faucibus sit amet,
-                        condimentum in odio. Maecenas porta, nibh eget facilisis
-                        varius, mauris libero viverra velit, et placerat dui
-                        dolor vel ligula.
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })} */}
+              {Array.from({ length: 8 }).map((_, index) => {
+                const project = randomizeProject();
+                return (
+                  <div
+                    key={`technology-card-${index}`}
+                    className="card-project"
+                  >
+                    <Image
+                      src={project.image}
+                      width={projectImageSize}
+                      height={projectImageSize}
+                      alt={project.name}
+                    />
+                    <div className="card-project-description">
+                      <p className="technologies-project">
+                        {project.techs.join(';')}
+                      </p>
+                      <p>
+                        {project.description}
                       </p>
                     </div>
                   </div>
