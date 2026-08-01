@@ -1,12 +1,12 @@
 "use client";
 
 import { RatingRepeat } from "./components/rating/Rating";
-import PlaceholderIcon from "./icons/PlaceholderIcon";
 import LinkedinIcon from "./icons/LinkedinIcon";
 import GithubIcon from "./icons/GithubIcon";
-import { Header } from "./components/header/Header";
-import { useState } from "react";
 import Image from "next/image";
+import Header from "./components/header/Header";
+import Project from "./components/project/Project";
+import { ProjectDTO } from './components/project/Project.interface';
 
 const contacts = {
   linkedin:
@@ -32,34 +32,45 @@ const technologies = {
   reactnative: 1,
 };
 
+// ------------------- HELPERS
+
+
+const pickNoRepeat = (list: string[], amount: number) => {
+  const copyOfList = [...list];
+  const pickedItems = Array.from({ length: amount }, () => {
+    const pos = Math.round(Math.random() * (copyOfList.length - 1));
+    const sel = copyOfList.splice(pos, 1);
+    return sel[0];
+  });
+
+  return pickedItems
+}
+
 // ------------------ PROJECTS
 
-const projects = [];
-const filtersUn = ['backend','frontend','fullstack'];
+const projects = [] as ProjectDTO[];
+const stacks = ['backend','frontend','fullstack'];
 
 const randomizeProject = () => {
   const imgRand = Math.round(Math.random() * 10);
+  const stackPos = Math.round(Math.random() * 3);
+  
   const techRandAmount = Math.round(Math.random() * 3) + 1; // de 1 a 4 itens
   const techsUnselected = Object.keys(technologies);
-  const category = Math.round(Math.random() * 3);
-
-  const techsSelected = Array.from({ length: techRandAmount }, () => {
-    const pos = Math.round(Math.random() * (techsUnselected.length - 1));
-    const sel = techsUnselected.splice(pos, 1);
-    return sel;
-  });
+  const techsSelected = pickNoRepeat(techsUnselected, techRandAmount);
 
   return {
     name: "Placeholder",
     techs: techsSelected,
-    categories: filtersUn[category],
+    categories: [stacks[stackPos]],
     description: `Donec odio magna, lobortis id faucibus sit amet,
                         condimentum in odio. Maecenas porta, nibh eget facilisis
                         varius, mauris libero viverra velit, et placerat dui
                         dolor vel ligula.`,
     image: `https://picsum.photos/300/300?random=${imgRand}`,
-  }
+  } as ProjectDTO
 }
+
 
 export default function Home() {
   return (
@@ -121,55 +132,22 @@ export default function Home() {
           {/* PROJETOS */}
           <section id="projects">
             {/* PROJETOS PESSOAIS*/}
-            <div 
-              id="projects-display"
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            >
-              {/* {projects.map((project, index) => {
-                return (
-                  <div
-                    key={`technology-card-${index}`}
-                    className="card-project"
-                  >
-                    <Image
-                      src={project.image}
-                      width={projectImageSize}
-                      height={projectImageSize}
-                      alt={project.name}
+            <div id="projects-display">
+              <div className="projects-made grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {Array.from({ length: 8 }).map((_, index) => {
+                  const project = randomizeProject();
+                  return (
+                    <Project
+                      key={index}
+                      imageSize={projectImageSize}
+                      project={project}
                     />
-                    <div className="card-project-description">
-                      <p>
-                        {project.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })} */}
-              {Array.from({ length: 8 }).map((_, index) => {
-                const project = randomizeProject();
-                return (
-                  <div
-                    key={`technology-card-${index}`}
-                    className="card-project"
-                  >
-                    <Image
-                      src={project.image}
-                      width={projectImageSize}
-                      height={projectImageSize}
-                      alt={project.name}
-                    />
-                    <div className="card-project-description">
-                      <p className="technologies-project">
-                        {project.techs.join(';')}
-                      </p>
-                      <p>
-                        {project.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-              {/* PROJETOS PARTICIPADOS */}
+                  );
+                })}
+              </div>
+              <div className="projects-participated">
+                {/* PROJETOS PARTICIPADOS */}
+              </div>
             </div>
           </section>
           {/* CONTATO */}

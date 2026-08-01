@@ -22,7 +22,7 @@ const links = [
   },
 ];
 
-export const Header = () => {
+export default function Header() {
   const {theme, setTheme} = useTheme();
   const [themeIndex, setThemeIndex] = useState(0);
 
