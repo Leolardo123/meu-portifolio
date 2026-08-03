@@ -1,10 +1,13 @@
-import React from "react";
-
 export default function Introduction() {
   return (
-    <section id="introduction">
-      <h1> Introdução </h1>
-      <p>
+    <section id="introduction" className="px-25 lg:px-75.5 pb-22.5">
+      <h3 className="text-[11px]">
+        Introdução
+      </h3>
+      <h1 className="uppercase font-bold text-[54px]">
+        Quem eu sou
+      </h1>
+      <p className="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae
         arcu sed sem egestas iaculis vel quis mi. Vivamus ex eros, pulvinar quis
         blandit ut, fringilla eu nibh. Duis a mollis lectus. Quisque interdum

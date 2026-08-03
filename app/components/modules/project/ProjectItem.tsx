@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { ProjectDTO } from "./Project.interface";
 
 interface ProjectProps {
@@ -9,7 +8,7 @@ interface ProjectProps {
 export default function ProjectItem(props: ProjectProps) {
   const project = props.project;
   return (
-    <div className="bg-primary text-(--font-dark) h-64 p-7">
+    <div className="h-64 p-7">
       <div className="flex flex-row gap-3">
         <Image src={project.image} width={30} height={30} alt={project.name} />
         <p className="title font-bold text-[20px]">Teste</p>
