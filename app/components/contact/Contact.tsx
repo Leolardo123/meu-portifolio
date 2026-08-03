@@ -12,7 +12,6 @@ const contacts = {
 };
 
 const contactIcons = {
-  email: LinkedinIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon
 } as { [key: string]: IconComponent }
@@ -24,10 +23,16 @@ export default function Contact() {
       <div>
         {Object.entries(contacts).map(([contactType, contactlink]) => {
           const ContactIcon = contactIcons[contactType];
-          return <a key={contactType} href={contactlink} className="flex">
-            <ContactIcon height={contactIconSize} width={contactIconSize} />
-            {contactlink}
-          </a>
+          return (
+            <a key={contactType} href={contactlink} className="flex">
+              {ContactIcon ? (
+                <ContactIcon height={contactIconSize} width={contactIconSize} />
+              ) : (
+                contactType + ":"
+              )}
+              {contactlink}
+            </a>
+          );
         })}
       </div>
     </section>
