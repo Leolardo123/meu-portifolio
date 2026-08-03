@@ -1,31 +1,47 @@
-import Image from "next/image";
-import React from "react";
 import { ProjectDTO } from "./Project.interface";
+import { technologies } from "../technology/Technology";
+import { pickNoRepeat } from "@/app/utils/helpers";
+import ProjectItem from "./ProjectItem";
 
-interface ProjectProps {
-  project: ProjectDTO;
-}
+const projects = [] as ProjectDTO[];
+const stacks = ["backend", "frontend", "fullstack"];
 
-export default function Project(props: ProjectProps) {
-  const project = props.project;
+const randomizeProject = () => {
+  const imgRand = Math.round(Math.random() * 10);
+  const stackPos = Math.round(Math.random() * 3);
+
+  const techRandAmount = Math.round(Math.random() * 3) + 1; // de 1 a 4 itens
+  const techsUnselected = Object.keys(technologies);
+  const techsSelected = pickNoRepeat(techsUnselected, techRandAmount);
+
+  return {
+    name: "Placeholder",
+    techs: techsSelected,
+    categories: [stacks[stackPos]],
+    description: `Donec odio magna, lobortis id faucibus sit amet,
+                        condimentum in odio. Maecenas porta, nibh eget facilisis
+                        varius, mauris libero viverra velit, et placerat dui
+                        dolor vel ligula.`,
+    image: `https://picsum.photos/300/300?random=${imgRand}`,
+    isOwnProject: true,
+  } as ProjectDTO;
+};
+
+export default function Project() {
   return (
-    <div className="bg-primary text-(--font-dark) h-64 w-38 sm:w-64 p-7">
-      <div className="flex flex-row gap-3">
-        <Image src={project.image} width={30} height={30} alt={project.name} />
-        <p className="title font-bold text-[20px]">Teste</p>
+    <section id="projects">
+      {/* PROJETOS PESSOAIS*/}
+      <div id="projects-display">
+        <div className="projects-made grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => {
+            const project = randomizeProject();
+            return <ProjectItem key={index} project={project} />;
+          })}
+        </div>
+        <div className="projects-participated">
+          {/* PROJETOS PARTICIPADOS */}
+        </div>
       </div>
-      <div className="card-project-description mt-3.5 text-[13px]">
-        <p className="categories-project mt-3">{project.categories}</p>
-        <p className="technologies-project truncate text-[10px]">
-          {project.techs.join(" * ")}
-        </p>
-        <p className="max-h-24 line-clamp-3 text-[12px] mt-3">
-          {project.description}
-        </p>
-        <a href="https://github.com/Leolardo123" className="underline mt-3">
-          Ver repositório github
-        </a>
-      </div>
-    </div>
+    </section>
   );
 }

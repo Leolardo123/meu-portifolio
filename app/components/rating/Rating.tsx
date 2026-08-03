@@ -10,7 +10,7 @@ interface RatingProps {
 
 const defaultMaxRating = 5;
 
-export function RatingRepeat(props: RatingProps) {
+export default function RatingRepeat(props: RatingProps) {
   return (
     <div className="flex flex-col">
       <div className="flex">
