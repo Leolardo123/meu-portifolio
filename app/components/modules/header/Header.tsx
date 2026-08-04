@@ -53,7 +53,7 @@ export default function Header() {
       <div
         className={`${isOpen ? "flex" : "hidden"} md:flex absolute top-17.75 left-0 w-full bg-(--color-theme) p-10 flex-col gap-4 border-b border-gray-700 md:static md:w-auto md:p-0 md:flex-row md:border-b-0 order-4 md:order-2`}
       >
-        <nav className="flex flex-col gap-4 md:flex-row md:gap-7.5 border-t border-(--font-grey)">
+        <nav className="flex flex-col gap-4 md:flex-row md:gap-7.5 border-t border-(--font-grey) md:border-0">
           {links.map((link, index) => (
             <a
               key={index}
@@ -68,7 +68,7 @@ export default function Header() {
       </div>
 
       {/* Action Buttons (Right side) */}
-      <div className={`gap-2.5 order-3 hidden md:flex`}>
+      <div className={`${isOpen ? "flex" : "hidden"} gap-2.5 order-3 md:flex`}>
         <button
           onClick={toggleTheme}
           type="button"
