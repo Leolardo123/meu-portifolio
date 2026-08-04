@@ -19,27 +19,29 @@ const contactIcons = {
 
 export default function Contact() {
   return (
-    <section id="contacts" className="bg-primary text-(--font-dark) px-25 lg:px-75.5 pt-22.5">
-      <h1 className="text-[11px]">
-        Contato
-      </h1>
-      <h3 className="uppercase font-bold text-[54px]">
-        Fale Comigo
-      </h3>
-      <div>
-        {Object.entries(contacts).map(([contactType, contactlink]) => {
-          const ContactIcon = contactIcons[contactType];
-          return (
-            <a key={contactType} href={contactlink} className="flex gap-2.5">
-              {ContactIcon ? (
-                <ContactIcon height={contactIconSize} width={contactIconSize} />
-              ) : (
-                contactType + ":"
-              )}
-              {contactlink}
-            </a>
-          );
-        })}
+    <section id="contacts" className="bg-primary text-(--font-dark) px-25 pt-11.25">
+      <div className="inner-section">
+        <h1 className="text-[11px]">
+          Contato
+        </h1>
+        <h3 className="uppercase font-bold text-[54px]">
+          Fale Comigo
+        </h3>
+        <div>
+          {Object.entries(contacts).map(([contactType, contactlink]) => {
+            const ContactIcon = contactIcons[contactType];
+            return (
+              <a key={contactType} href={contactlink} className="flex gap-2.5">
+                {ContactIcon ? (
+                  <ContactIcon height={contactIconSize} width={contactIconSize} />
+                ) : (
+                  contactType + ":"
+                )}
+                {contactlink}
+              </a>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

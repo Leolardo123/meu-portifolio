@@ -19,7 +19,7 @@
   --color-secondary-3: #C0C0C0;
   --font-dark: #000000;
   --font-light: #FFFFFF;
-  --font-grey: #101010;
+  --font-grey: #555555;
 }
 
 [data-theme='dark-theme'] {
@@ -45,3 +45,11 @@ body {
   font-family: Firacode;
 }
 
+.inner-section {
+  max-width: 1180px;
+  align-items: center;
+}
+
+section {
+  padding: 90px 40px;
+}
