@@ -1,0 +1,30 @@
+/* Container provides the 3D viewport depth */
+.card-container {
+  perspective: 1000px; /* Lower values make the 3D effect more extreme */
+}
+
+/* Base card styling */
+.tilt-card {
+  /* Critical for enabling 3D layers inside the card */
+  /* Enable 3D rendering for inner elements */
+  transform-style: preserve-3d; 
+  
+  /* Smooth return to baseline when mouse leaves */
+  transition: transform 0.15s ease-out; 
+  will-change: transform;
+}
+
+/* Hover state styling */
+.tilt-card:hover {
+  /* Rotates the card on both X and Y axes and scales it up slightly */
+  transform: rotateX(15deg) rotateY(-15deg) scale(1.05);
+  
+  /* Deepens the shadow to mimic the card physically lifting off the screen */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Pushes text forward in 3D space for a "pop out" effect */
+.tilt-card h3, 
+.tilt-card p {
+  transform: translateZ(40px);
+}

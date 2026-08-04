@@ -1,8 +1,8 @@
 import RatingRepeat from "../../elements/rating/Rating";
 import { IconComponent } from "@/app/interface/icon.interface";
-
 export const technologies = {
   Javascript: 4,
+  Typescript: 4,
   PostgreSQL: 4,
   "Node.Js": 4,
   "React(Web)": 4,
@@ -10,9 +10,13 @@ export const technologies = {
   Spring: 1,
   "Next.js": 2,
   "C#": 1,
+  "C": 1,
   ".NET": 1,
   ReactNative: 1,
 };
+
+export type TechnologiesType = keyof typeof technologies;
+
 
 const techIcons = {
   // Java: JavaIcon,
@@ -29,11 +33,11 @@ export default function Technology() {
           Tecnologias
         </h1>
         <h1 className="uppercase font-bold text-[54px]">
-          Teste
+          Principais Linguagens & Frameworks
         </h1>
         <p className="w-150 text-justify">
           Essa lista foi feita baseada na afinidade com cada tecnologia,
-          quanto mais estrelas maior a facilidade em utilizar em um projeto.
+          quanto mais estrelas maior a facilidade em utilizar no dia-a-dia.
         </p>
       </div>
       <div id="technology-details">
