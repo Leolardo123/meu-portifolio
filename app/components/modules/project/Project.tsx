@@ -86,10 +86,6 @@ export default function Project() {
     }
   };
 
-
-  const stacks = ['teste'];
-  type StackType = typeof stacks;
-
   const handleSelectCategory = (stack: string) => {
     if (selectedCategory === stack) return setSelectedCategory('');
     setSelectedCategory(stack || '');
@@ -105,13 +101,13 @@ export default function Project() {
       className="bg-primary text-(--font-dark)"
     >
       {/* PROJETOS PESSOAIS */}
-      <div className="inner-section">
+      <div className="inner-section min-h-dvh">
         <div className="flex justify-between pb-3.25">
           <h1 className="text-[11px]">Projetos</h1>
           <h1 className="text-[11px]">{projectList.length + " no total"}</h1>
         </div>
         <div id="projects-display">
-          <h1 className="uppercase font-bold text-[54px]">O que já fiz</h1>
+          <h1 className="uppercase font-bold text-[54px]">Alguns dos meus projetos</h1>
           <p className="w-150 text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Pellentesque nec elementum nisl, ut eleifend nisl. Aliquam

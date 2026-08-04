@@ -48,6 +48,7 @@ body {
 .inner-section {
   max-width: 1180px;
   align-items: center;
+  margin: 0 auto;
 }
 
 section {

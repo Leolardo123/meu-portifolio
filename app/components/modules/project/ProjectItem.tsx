@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { ProjectDTO } from "./Project.interface";
 import "../../../animation.css";
-
+import { motion, useSpring, useMotionValue, useTransform } from 'motion/react'
 interface ProjectProps {
   project: ProjectDTO;
 }
@@ -9,42 +9,55 @@ interface ProjectProps {
 export default function ProjectItem(props: ProjectProps) {
   const project = props.project;
   const mainCategory = project.categories?.[0];
-  const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-    const rect = card.getBoundingClientRect();
+  const mouseSpringX = useSpring(x, { mass: 5 });
+  const mouseSpringY = useSpring(y, { mass: 5 });
 
-    const x = (e.clientX - rect.left) / rect.width - 1.0;
-    const y = (e.clientY - rect.top) / rect.height - 1.0;
+  const degLimit = '30.0deg';
+  const degLowerLimit = '-30.0deg';
+  const rotateX = useTransform(mouseSpringX, [-0.5, 0.5], [degLimit, degLowerLimit]);
+  const rotateY = useTransform(mouseSpringY, [-0.5, 0.5], [degLowerLimit, degLimit]);
 
-    const maxRotation = 15;
+  const handleMouseMove = (e) => {
+    const rect = e.target.getBoundingClientRect();
 
-    card.style.setProperty("--rX", `${-y * maxRotation}deg`);
-    card.style.setProperty("--rY", `${x * maxRotation}deg`);
-  };
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  }
 
   const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (!card) return;
+    x.set(0);
+    y.set(0);
+  }
 
-    card.style.setProperty("--rX", "0deg");
-    card.style.setProperty("--rY", "0deg");
-  };
 
   return (
-    <div
+    <motion.div
       className="bg-primary h-64 p-7 tilt-card camera-corners group"
-      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
       onMouseMove={handleMouseMove}
-      ref={cardRef}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="flex flex-row justify-between">
         <p className="title font-bold text-[20px] truncate">{project.name}</p>
         {mainCategory && (
-          <p className="bg-black text-(--font-light) py-1 px-2.25 rounded-[3px] transition-colors duration-300 group-hover:bg-primary group-hover:text-(--font-dark)">
+          <p className="bg-black whitespace-nowrap text-(--font-light) py-1 px-2.25 rounded-[3px] transition-colors duration-300 group-hover:bg-primary group-hover:text-(--font-dark)">
             {mainCategory}
           </p>
         )}
@@ -63,6 +76,6 @@ export default function ProjectItem(props: ProjectProps) {
           Ver repositório github
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }
