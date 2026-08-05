@@ -11,12 +11,12 @@ const links = [
 ];
 
 export default function Header() {
+  const themes = ['light-theme','dark-theme'];
   const { theme, setTheme } = useTheme();
-  const [themeIndex, setThemeIndex] = useState(0);
+  const [themeIndex, setThemeIndex] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleTheme = () => {
-    const themes = ['dark-theme', 'light-theme'];
     setThemeIndex((prev) => (prev + 1) % themes.length);
     setTheme(themes[themeIndex]);
   };
@@ -57,7 +57,7 @@ export default function Header() {
           {links.map((link, index) => (
             <a
               key={index}
-              className="text-[12px] font-bold uppercase block pt-5 md:p5-0"
+              className="text-[12px] font-bold uppercase block pt-5 md:p5-0 md:hover:-translate-y-0.5 hover:text-secondary-2"
               href={link.href}
               onClick={() => setIsOpen(false)} // Closes menu when a link is clicked
             >

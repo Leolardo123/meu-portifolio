@@ -27,19 +27,17 @@ const techIcons = {
 
 export default function Technology() {
   return (
-    <section
-      id="technology"
-      className="bg-secondary-3 text-(--font-dark)"
-    >
+    <section id="technology" className="bg-secondary-3 text-(--font-dark)">
       <div className="inner-section">
         <div id="technology-description">
           <h1 className="text-[11px]">Tecnologias</h1>
-          <h1 className="uppercase font-bold text-[54px]">
-            Principais Linguagens & Frameworks
+          <h1 className="uppercase font-bold text-[54px]  max-w-2xl">
+            Tecnologias que utilizo
           </h1>
           <p className="w-150 text-justify">
-            Essa lista foi feita baseada na afinidade com cada tecnologia,
-            quanto mais estrelas maior a facilidade em utilizar no dia-a-dia.
+            A classificação abaixo representa meu nível de familiaridade com
+            cada tecnologia, considerando minha experiência prática em projetos
+            pessoais, acadêmicos e profissionais.
           </p>
         </div>
         <div id="technology-details">

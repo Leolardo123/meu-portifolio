@@ -97,27 +97,26 @@ export default function Project() {
   }, []);
 
   return (
-    <section
-      id="projects"
-      className="bg-primary text-(--font-dark)"
-    >
+    <section id="projects" className="bg-primary text-(--font-dark)">
       {/* PROJETOS PESSOAIS */}
       <div className="inner-section min-h-dvh">
         <div className="flex justify-between pb-3.25">
           <h1 className="text-[11px]">Projetos</h1>
-          <h1 className="text-[11px]">{projectList.length + " no total"}</h1>
+          <h1 className="text-[11px]">
+            {projectList.length + " destaques no total"}
+          </h1>
         </div>
         <div id="projects-display">
-          <h1 className="uppercase font-bold text-[54px]">Alguns dos meus projetos</h1>
-          <p className="w-150 text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque nec elementum nisl, ut eleifend nisl. Aliquam
-            sollicitudin blandit metus, vel laoreet libero varius id. Ut dictum,
-            leo in ultricies facilisis, leo lectus maximus elit, eget luctus
-            ipsum mi id lorem. Praesent consequat fermentum arcu, in cursus orci
-            ullamcorper sed.
+          <h1 className="uppercase font-bold text-[54px] max-w-2xl">
+            Projetos em destaque
+          </h1>
+          <p className="text-justify whitespace-normal max-w-2xl leading-relaxed">
+            Estes são alguns dos projetos que desenvolvi durante estudos,
+            projetos pessoais e atividades acadêmicas. Cada repositório
+            representa diferentes tecnologias, desafios e soluções implementadas
+            ao longo da minha evolução como desenvolvedor.
           </p>
-          <div className="flex gap-2 pt-12.5 pb-12.5">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 pt-12.5 pb-12.5">
             {categoryList.map((category) => (
               <PrimaryButton
                 key={category}

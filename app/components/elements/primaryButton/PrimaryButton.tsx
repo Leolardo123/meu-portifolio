@@ -12,6 +12,7 @@ export default function PrimaryButton({ title, isActive, onClick }: PrimaryButto
         rounded-[20px] 
         border border-(--font-dark) 
         py-1.75 px-3.5 
+        whitespace-nowrap
         transition-all duration-200
         hover:-translate-y-1
         ${
