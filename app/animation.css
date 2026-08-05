@@ -1,64 +1,72 @@
-.tilt-card {
-  /* Define a perspectiva de profundidade 3D no container */
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  
-  /* Valores iniciais das variáveis */
-  --rX: 0deg;
-  --rY: 0deg;
-  
-  /* Aplica a rotação calculada no JS */
-  transform: rotateX(var(--rX)) rotateY(var(--rY));
-  
-  /* Transição suave ao entrar/sair com o mouse */
-  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-}
-
-.tilt-card:hover {
-  box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.15);
-    background-color: black;
-    color: white;
-}
-
-.content-layer {
-  transform: translateZ(40px);
-}
-
-
-.camera-corners {
+.corners-container {
   position: relative;
 }
 
-.camera-corners::before,
-.camera-corners::after {
+/* Top corners using ::before and ::after */
+.corners-container::before,
+.corners-container::after {
   content: "";
   position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  border-color: rgba(255, 255, 255, 0.4); /* Cor das linhas */
-  border-style: solid;
+  width: 14px;
+  height: 14px;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: 0;
 }
 
-/* Linhas Verticais que passam dos limites superiores/inferiores */
-.camera-corners::before {
-  inset: -8px 12px;
-  border-width: 0 1px; /* Linha esquerda e direita */
+.corners-container::before {
+  top: 3px;
+  left: 3px;
+  border-width: 2px 0 0 2px;
 }
 
-/* Linhas Horizontais que passam dos limites laterais */
-.camera-corners::after {
-  inset: 12px -8px;
-  border-width: 1px 0; /* Linha superior e inferior */
+.corners-container::after {
+  top: 3px;
+  right: 3px;
+  border-width: 2px 2px 0 0;
 }
 
-/* Ativa e aproxima as linhas criando o efeito de "foco prendendo" o card */
-.camera-corners:hover::before {
+/* Bottom corners using a child element with pseudo-elements */
+.corners-container .bottom-corners {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.corners-container .bottom-corners::before,
+.corners-container .bottom-corners::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: 0;
+}
+
+.corners-container .bottom-corners::before {
+  left: 0;
+  bottom: 0;
+  border-width: 0 0 2px 2px;
+}
+
+.corners-container .bottom-corners::after {
+  right: 0;
+  bottom: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* Hover states */
+.corners-container:hover::before,
+.corners-container:hover::after,
+.corners-container:hover .bottom-corners::before,
+.corners-container:hover .bottom-corners::after {
   opacity: 1;
-  inset: 0px 12px;
-}
-.camera-corners:hover::after {
-  opacity: 1;
-  inset: 12px 0px;
 }

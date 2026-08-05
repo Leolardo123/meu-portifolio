@@ -28,7 +28,7 @@ const randomizeProject = () => {
 };
 
 export default function Project() {
-  const [selectedCategory, setSelectedCategory] = useState<string>();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [projectList, setProjectList] = useState<ProjectDTO[]>([]);
   const showlist = ['292635733', '525946744', '1316550267', '348147494', '311440886'];
   
@@ -87,7 +87,8 @@ export default function Project() {
   };
 
   const handleSelectCategory = (stack: string) => {
-    if (selectedCategory === stack) return setSelectedCategory('');
+    console.log('Clicked category:', stack, 'Current:', selectedCategory);
+    if (selectedCategory === stack) return setSelectedCategory(null);
     setSelectedCategory(stack || '');
   };
 
@@ -133,9 +134,9 @@ export default function Project() {
             {projectList.map((project, index) => {
               if (
                 selectedCategory &&
-                !project.categories.includes(selectedCategory || "")
+                !project.categories.includes(selectedCategory)
               ) {
-                return;
+                return null;
               }
 
               return <ProjectItem key={index} project={project} />;

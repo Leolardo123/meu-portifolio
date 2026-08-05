@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { ProjectDTO } from "./Project.interface";
 import "../../../animation.css";
 import { motion, useSpring, useMotionValue, useTransform } from 'motion/react'
@@ -13,13 +12,13 @@ export default function ProjectItem(props: ProjectProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseSpringX = useSpring(x, { mass: 5 });
-  const mouseSpringY = useSpring(y, { mass: 5 });
+  const mouseSpringX = useSpring(x, { mass: 1 });
+  const mouseSpringY = useSpring(y, { mass: 1 });
 
-  const degLimit = '30.0deg';
-  const degLowerLimit = '-30.0deg';
-  const rotateX = useTransform(mouseSpringX, [-0.5, 0.5], [degLimit, degLowerLimit]);
-  const rotateY = useTransform(mouseSpringY, [-0.5, 0.5], [degLowerLimit, degLimit]);
+  const degLimit = '20.0deg';
+  const degLowerLimit = '-20.0deg';
+  const rotateX = useTransform(mouseSpringX, [-0.5, 0.5], [degLowerLimit, degLimit]);
+  const rotateY = useTransform(mouseSpringY, [-0.5, 0.5], [degLimit, degLowerLimit]);
 
   const handleMouseMove = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -45,7 +44,7 @@ export default function ProjectItem(props: ProjectProps) {
 
   return (
     <motion.div
-      className="bg-primary h-64 p-7 tilt-card camera-corners group"
+      className="bg-primary h-64 p-7 hover:bg-black hover:text-white group corners-container"
       style={{
         rotateX,
         rotateY,
@@ -54,6 +53,7 @@ export default function ProjectItem(props: ProjectProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      <div className="bottom-corners"></div>
       <div className="flex flex-row justify-between">
         <p className="title font-bold text-[20px] truncate">{project.name}</p>
         {mainCategory && (
@@ -62,7 +62,7 @@ export default function ProjectItem(props: ProjectProps) {
           </p>
         )}
       </div>
-      <div className="card-project-description mt-3.5 text-[13px]">
+      <div className="card-project-description mt-3.5 text-[13px] ">
         <p className="technologies-project truncate text-[10px]">
           {project.techs.join(" * ")}
         </p>
@@ -76,6 +76,7 @@ export default function ProjectItem(props: ProjectProps) {
           Ver repositório github
         </a>
       </div>
+       <div className="corners-bottom absolute opacity-1 group-hover:opacity-100 transition-opacity duration-300"></div>
     </motion.div>
   );
 }
