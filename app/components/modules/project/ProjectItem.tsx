@@ -20,8 +20,8 @@ export default function ProjectItem(props: ProjectProps) {
   const rotateX = useTransform(mouseSpringX, [-0.5, 0.5], [degLowerLimit, degLimit]);
   const rotateY = useTransform(mouseSpringY, [-0.5, 0.5], [degLimit, degLowerLimit]);
 
-  const handleMouseMove = (e) => {
-    const rect = e.target.getBoundingClientRect();
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
 
     const width = rect.width;
     const height = rect.height;

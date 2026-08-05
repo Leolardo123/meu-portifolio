@@ -1,100 +1,27 @@
-import { ProjectDTO } from "./Project.interface";
-import { technologies } from "../technology/Technology";
-import { pickNoRepeat } from "@/app/utils/helpers";
 import ProjectItem from "./ProjectItem";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PrimaryButton from "../../elements/primaryButton/PrimaryButton";
-
-const randomizeProject = () => {
-  const imgRand = Math.floor(Math.random() * 10);
-
-  const techRandAmount = Math.floor(Math.random() * 3) + 1; // de 1 a 4 itens
-  const techsUnselected = Object.keys(technologies);
-  const techsSelected = pickNoRepeat(techsUnselected, techRandAmount);
-
-  return {
-    name: "Placeholder",
-    techs: techsSelected,
-    categories: [],
-    description: `Donec odio magna, lobortis id faucibus sit amet,
-                        condimentum in odio. Maecenas porta, nibh eget facilisis
-                        varius, mauris libero viverra velit, et placerat dui
-                        dolor vel ligula.`,
-    image: `https://picsum.photos/300/300?random=${imgRand}`,
-    githubUrl: `https://github.com/Leolardo123/`,
-    isOwnProject: true,
-    updatedAt: new Date(),
-  } as ProjectDTO;
-};
+import { useGitRepositories } from "@/app/hooks/useGitRepositories";
 
 export default function Project() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [projectList, setProjectList] = useState<ProjectDTO[]>([]);
-  const showlist = ['292635733', '525946744', '1316550267', '348147494', '311440886'];
-  
-  const [categoryList, setCategoryList] = useState<string[]>([]);
-  const handleLoadRepositories = async () => {
-    try {
-      const response = await fetch(
-        "https://api.github.com/users/Leolardo123/repos",
-      );
+  const { projectList, categoryList, loading, error } = useGitRepositories();
 
-      if (!response.ok) {
-        throw new Error("Erro ao buscar repositórios");
-      }
-
-      const repos = await response.json();
-      const topics = new Set<string>([]);
-
-      const filteredRepos = repos
-        .filter((repo: any) => !repo.fork && showlist.includes(String(repo.id)))
-        .sort((p1: any, p2: any) => new Date(p2.created_at).getTime() - new Date(p1.created_at).getTime());
-
-      const projects: ProjectDTO[] = await Promise.all(
-        filteredRepos.map(async (repo: any) => {
-          repo.topics.forEach((t: string) => topics.add(t));
-
-          let techs: string[] = [];
-          try {
-            const langResponse = await fetch(repo.languages_url);
-            if (langResponse.ok) {
-              const langsObj = await langResponse.json();
-              techs = Object.keys(langsObj);
-            }
-          } catch (langError) {
-            console.error(`Erro ao buscar linguagens do repo ${repo.name}:`, langError);
-            techs = repo.language ? [repo.language] : [];
-          }
-
-          return {
-            name: repo.name,
-            description: repo.description ?? "Sem descrição.",
-            techs: techs,
-            categories: repo.topics,
-            image: "/images/default-project.png",
-            isOwnProject: true,
-            githubUrl: repo.html_url,
-            updatedAt: repo.updated_at
-          };
-        })
-      );
-
-      setProjectList(projects);
-      setCategoryList([...topics]);
-    } catch (err) {
-      console.error(err);
+  const handleSelectCategory = (stack: string) => {
+    if (selectedCategory === stack) {
+      setSelectedCategory(null);
+    } else {
+      setSelectedCategory(stack);
     }
   };
 
-  const handleSelectCategory = (stack: string) => {
-    console.log('Clicked category:', stack, 'Current:', selectedCategory);
-    if (selectedCategory === stack) return setSelectedCategory(null);
-    setSelectedCategory(stack || '');
-  };
+  if (loading) {
+    return <div className="bg-primary text-(--font-dark) min-h-dvh">Loading projects...</div>;
+  }
 
-  useEffect(() => {
-    handleLoadRepositories();
-  }, []);
+  if (error) {
+    return <div className="bg-primary text-(--font-dark) min-h-dvh">Error loading projects: {error.message}</div>;
+  }
 
   return (
     <section id="projects" className="bg-primary text-(--font-dark)">
