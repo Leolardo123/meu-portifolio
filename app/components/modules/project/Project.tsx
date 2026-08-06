@@ -24,26 +24,26 @@ export default function Project() {
   }
 
   return (
-    <section id="projects" className="bg-primary text-(--font-dark)">
+    <section id="projects" className="bg-primary text-(--font-dark) snap-start snap-always">
       {/* PROJETOS PESSOAIS */}
       <div className="inner-section min-h-dvh">
-        <div className="flex justify-between pb-3.25">
+        <div className="flex flex-wrap gap-2 justify-between pb-3.25">
           <h3 className="section-subtitle">Projetos</h3>
           <h3 className="section-subtitle">
             {projectList.length + " destaques no total"}
           </h3>
         </div>
-        <div id="projects-display">
+        <div id="projects-display" className="flex flex-col gap-4">
           <h1 className="section-title">
             Projetos em destaque
           </h1>
-          <p className="text-justify whitespace-normal max-w-2xl leading-relaxed">
+          <p className="section-paragraph">
             Estes são alguns dos projetos que desenvolvi durante estudos,
             projetos pessoais e atividades acadêmicas. Cada repositório
             representa diferentes tecnologias, desafios e soluções implementadas
             ao longo da minha evolução como desenvolvedor.
           </p>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 pt-12.5 pb-12.5">
+          <div className="flex flex-wrap gap-4 pt-12.5 pb-12.5">
             {categoryList.map((category) => (
               <PrimaryButton
                 key={category}

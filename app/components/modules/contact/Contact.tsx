@@ -3,7 +3,7 @@ import GithubIcon from "@/app/icons/GithubIcon";
 import LinkedinIcon from "@/app/icons/LinkedinIcon";
 import { IconComponent } from "@/app/interface/icon.interface";
 
-const contactIconSize = 25;
+const contactIconSize = 100;
 const contacts = {
   email: "leoferstos5@gmail.com",
   linkedin:
@@ -21,7 +21,7 @@ export default function Contact() {
   return (
     <section
       id="contacts"
-      className="bg-primary text-(--font-dark) px-25 pt-11.25"
+      className="bg-primary text-(--font-dark) px-25 pt-11.25 snap-start snap-always"
     >
       <div className="inner-section">
         <h2 className="section-subtitle">Contato</h2>
@@ -31,20 +31,26 @@ export default function Contact() {
           experiências. Caso queira entrar em contato, utilize um dos canais
           abaixo.
         </p>
-        <div className="pt-11.25">
+        <div className="flex flex-wrap gap-4 content-center pt-11.25 m-auto mt-0">
           {Object.entries(contacts).map(([contactType, contactlink]) => {
             const ContactIcon = contactIcons[contactType];
             return (
-              <a key={contactType} href={contactlink} className="flex gap-2.5">
+              <a
+                key={contactType}
+                href={contactlink}
+                className="flex flex-col gap-2.5 group  hover:-translate-y-1 transition-all"
+              >
                 {ContactIcon ? (
                   <ContactIcon
                     height={contactIconSize}
                     width={contactIconSize}
                   />
                 ) : (
-                  contactType + ":"
+                  contactType
                 )}
-                {contactlink}
+                <span className="bg-secondary-3 p-2 rounded-md opacity-0 group-hover:opacity-100 transition-all">
+                  {contactType}
+                </span>
               </a>
             );
           })}

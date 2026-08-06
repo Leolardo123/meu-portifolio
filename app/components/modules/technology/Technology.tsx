@@ -28,7 +28,7 @@ const techIcons = {
 
 export default function Technology() {
   return (
-    <section id="technology" className="bg-secondary-3 text-(--font-dark)">
+    <section id="technology" className="bg-secondary-3 text-(--font-dark) snap-start snap-always">
       <div className="inner-section">
         <div id="technology-description">
           <h1 className="section-subtitle">Tecnologias</h1>
@@ -41,17 +41,17 @@ export default function Technology() {
             pessoais, acadêmicos e profissionais.
           </p>
         </div>
-        <div id="technology-details">
+        <div id="technology-details" className="pt-12.5">
           <div
             id="technology-list"
-            className="grid grid-cols-1 sm:grid-cols-2 mt-12.25"
+            className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
           >
             {Object.entries(technologies).map(([keyTech, ratingValue]) => {
               const TechIcon = techIcons[keyTech as keyof typeof techIcons];
               return (
                 <div
                   key={`technology-rating-${keyTech}`}
-                  className="technology-item-rating flex flex-col"
+                  className="technology-item-rating p-2 flex flex-col shadow-[0px_0px_3px_1px_rgba(0,0,0,0.25)] hover:scale-105 transition-all rounded"
                 >
                   <div className="flex items-center gap-0.5">
                     {TechIcon && <TechIcon width={40} height={40} />}

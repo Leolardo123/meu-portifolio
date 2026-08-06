@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 const links = [
   { label: "Introdução", href: "#introduction" },
-  { label: "Tecnologias", href: "#technology" },
   { label: "Projetos", href: "#projects" },
+  { label: "Tecnologias", href: "#technology" },
   { label: "Contato", href: "#contacts" },
 ];
 
@@ -57,7 +57,7 @@ export default function Header() {
           {links.map((link, index) => (
             <a
               key={index}
-              className="text-[12px] font-bold uppercase block pt-5 md:p5-0 md:hover:-translate-y-0.5 hover:text-secondary-2"
+              className="text-[12px] transition-all font-bold uppercase block pt-5 md:p5-0 md:hover:-translate-y-0.5 hover:text-secondary-2"
               href={link.href}
               onClick={() => setIsOpen(false)} // Closes menu when a link is clicked
             >
@@ -72,13 +72,13 @@ export default function Header() {
         <button
           onClick={toggleTheme}
           type="button"
-          className="text-[11px] font-bold uppercase rounded-3xl border p-2.25"
+          className="text-[11px] font-bold uppercase rounded-3xl border p-2.25 hover:bg-secondary-1"
         >
           {theme == "light-theme" ? "☀️" : "🌙"}
         </button>
         <button
           type="button"
-          className="text-[11px] font-bold uppercase rounded-3xl border p-2.25"
+          className="text-[11px] font-bold uppercase rounded-3xl border p-2.25 hover:bg-secondary-1"
         >
           Pt-Br
         </button>

@@ -9,11 +9,11 @@ export default function PrimaryButton({ title, isActive, onClick }: PrimaryButto
     <button
       onClick={onClick}
       className={`
-        rounded-[20px] 
+        rounded-4xl
         border border-(--font-dark) 
         py-1.75 px-3.5 
         whitespace-nowrap
-        transition-all duration-200
+        transition-all 
         hover:-translate-y-1
         ${
           isActive ? 

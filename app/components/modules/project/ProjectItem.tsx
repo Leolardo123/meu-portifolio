@@ -57,7 +57,7 @@ export default function ProjectItem(props: ProjectProps) {
       <div className="flex flex-row justify-between">
         <p className="title font-bold text-[20px] truncate">{project.name}</p>
         {mainCategory && (
-          <p className="bg-black whitespace-nowrap text-(--font-light) py-1 px-2.25 rounded-[3px] transition-colors duration-300 group-hover:bg-primary group-hover:text-(--font-dark)">
+          <p className="bg-black whitespace-nowrap text-(--font-light) py-1 px-2.25 rounded transition-colors duration-300 group-hover:bg-primary group-hover:text-(--font-dark)">
             {mainCategory}
           </p>
         )}
