@@ -30,7 +30,7 @@ export default function Technology() {
   return (
     <section id="technology" className="bg-secondary-3 text-(--font-dark) snap-start snap-always">
       <div className="inner-section">
-        <div id="technology-description">
+        <div id="technology-description" className="flex flex-col gap-4">
           <h1 className="section-subtitle">Tecnologias</h1>
           <h1 className="section-title">
             Tecnologias que utilizo
