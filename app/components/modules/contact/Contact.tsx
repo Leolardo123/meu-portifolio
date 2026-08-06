@@ -2,6 +2,7 @@ import { EmailIcon } from "@/app/icons/EmailIcon";
 import GithubIcon from "@/app/icons/GithubIcon";
 import LinkedinIcon from "@/app/icons/LinkedinIcon";
 import { IconComponent } from "@/app/interface/icon.interface";
+import Tooltip from "../../elements/tooltip/Tooltip";
 
 const contactIconSize = 100;
 const contacts = {
@@ -31,14 +32,14 @@ export default function Contact() {
           experiências. Caso queira entrar em contato, utilize um dos canais
           abaixo.
         </p>
-        <div className="flex flex-wrap gap-4 content-center pt-11.25 m-auto mt-0">
+        <div className="flex flex-wrap gap-4 pt-12 content-center m-auto mt-0">
           {Object.entries(contacts).map(([contactType, contactlink]) => {
             const ContactIcon = contactIcons[contactType];
             return (
               <a
                 key={contactType}
                 href={contactlink}
-                className="flex flex-col gap-2.5 group  hover:-translate-y-1 transition-all"
+                className="flex flex-col gap-2.5 group content-center text-center  hover:-translate-y-1 transition-all"
               >
                 {ContactIcon ? (
                   <ContactIcon
@@ -48,9 +49,7 @@ export default function Contact() {
                 ) : (
                   contactType
                 )}
-                <span className="bg-secondary-3 p-2 rounded-md opacity-0 group-hover:opacity-100 transition-all">
-                  {contactType}
-                </span>
+                <Tooltip content={contactType}/>
               </a>
             );
           })}
