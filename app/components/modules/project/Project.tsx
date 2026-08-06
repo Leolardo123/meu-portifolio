@@ -28,13 +28,13 @@ export default function Project() {
       {/* PROJETOS PESSOAIS */}
       <div className="inner-section min-h-dvh">
         <div className="flex justify-between pb-3.25">
-          <h1 className="text-[11px]">Projetos</h1>
-          <h1 className="text-[11px]">
+          <h3 className="section-subtitle">Projetos</h3>
+          <h3 className="section-subtitle">
             {projectList.length + " destaques no total"}
-          </h1>
+          </h3>
         </div>
         <div id="projects-display">
-          <h1 className="uppercase font-bold text-[54px] max-w-2xl">
+          <h1 className="section-title">
             Projetos em destaque
           </h1>
           <p className="text-justify whitespace-normal max-w-2xl leading-relaxed">

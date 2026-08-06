@@ -1,0 +1,25 @@
+.inner-section {
+  max-width: 1180px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+section {
+  padding: 90px 40px;
+}
+
+.section-title {
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  font-size: 11px;
+  line-height: 1.1;
+}
+
+.section-paragraph {
+  text-align: justify;
+}

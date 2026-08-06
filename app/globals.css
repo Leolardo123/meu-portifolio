@@ -45,12 +45,3 @@ body {
   font-family: Firacode;
 }
 
-.inner-section {
-  max-width: 1180px;
-  align-items: center;
-  margin: 0 auto;
-}
-
-section {
-  padding: 90px 40px;
-}

@@ -2,10 +2,10 @@ export default function Introduction() {
   return (
     <section id="introduction">
       <div className="inner-section">
-        <h3 className="text-[11px]">Introdução</h3>
-        <h1 className="uppercase font-bold text-[54px] max-w-2xl" >Olá, eu sou Leonardo Ferreira dos Santos.</h1>
-        <h3 className="text-[11px] pb-2">Desenvolvedor de Software • TypeScript • Node.js • React • PostgreSQL</h3>
-        <p className="text-justify whitespace-normal max-w-2xl leading-relaxed">
+        <h3 className="section-subtitle">Introdução</h3>
+        <h1 className="section-title" >Olá, eu sou Leonardo Ferreira dos Santos.</h1>
+        <h3 className="section-subtitle pb-2">Desenvolvedor de Software • TypeScript • Node.js • React • PostgreSQL</h3>
+        <p className="section-paragraph">
           Sou desenvolvedor de software com foco no desenvolvimento de
           aplicações web. Tenho experiência principalmente com Node.js,
           TypeScript, PostgreSQL e React, buscando sempre escrever código

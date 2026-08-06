@@ -6,6 +6,8 @@ import Technology from "./components/modules/technology/Technology";
 import Project from "./components/modules/project/Project";
 import Contact from "./components/modules/contact/Contact";
 
+import './page.css';
+
 export default function Home() {
   return (
     <div>

@@ -24,9 +24,9 @@ export default function Contact() {
       className="bg-primary text-(--font-dark) px-25 pt-11.25"
     >
       <div className="inner-section">
-        <h1 className="text-[11px]">Contato</h1>
-        <h3 className="uppercase font-bold text-[54px] max-w-2xl">Fale Comigo</h3>
-        <p className="text-justify whitespace-normal max-w-2xl leading-relaxed">
+        <h2 className="section-subtitle">Contato</h2>
+        <h1 className="section-title">Fale Comigo</h1>
+        <p className="section-paragraph">
           Estou sempre aberto a novas oportunidades, projetos e troca de
           experiências. Caso queira entrar em contato, utilize um dos canais
           abaixo.

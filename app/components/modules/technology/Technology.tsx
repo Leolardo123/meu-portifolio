@@ -1,5 +1,6 @@
 import RatingRepeat from "../../elements/rating/Rating";
 import { IconComponent } from "@/app/interface/icon.interface";
+
 export const technologies = {
   Javascript: 4,
   Typescript: 4,
@@ -31,10 +32,10 @@ export default function Technology() {
       <div className="inner-section">
         <div id="technology-description">
           <h1 className="text-[11px]">Tecnologias</h1>
-          <h1 className="uppercase font-bold text-[54px]  max-w-2xl">
+          <h1 className="section-title">
             Tecnologias que utilizo
           </h1>
-          <p className="w-150 text-justify">
+          <p className="section-paragraph">
             A classificação abaixo representa meu nível de familiaridade com
             cada tecnologia, considerando minha experiência prática em projetos
             pessoais, acadêmicos e profissionais.
