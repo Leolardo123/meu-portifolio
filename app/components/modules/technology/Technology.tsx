@@ -31,7 +31,7 @@ export default function Technology() {
     <section id="technology" className="bg-secondary-3 text-(--font-dark)">
       <div className="inner-section">
         <div id="technology-description">
-          <h1 className="text-[11px]">Tecnologias</h1>
+          <h1 className="section-subtitle">Tecnologias</h1>
           <h1 className="section-title">
             Tecnologias que utilizo
           </h1>
