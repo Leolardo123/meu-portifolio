@@ -71,6 +71,7 @@ export default function RootLayout({
     <html
       lang="pt-Br"
       suppressHydrationWarning
+      data-theme="dark-theme"
       className={twMerge(
         geistSans.variable,
         geistMono.variable,
@@ -85,7 +86,7 @@ export default function RootLayout({
           defaultTheme="dark-theme"
           enableSystem={true}
         >
-          <div data-theme="dark-theme">{children}</div>
+          {children}
         </ThemeProvider>
       </body>
     </html>
