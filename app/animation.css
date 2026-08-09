@@ -70,35 +70,3 @@
 .corners-container:hover .bottom-corners::after {
   opacity: 1;
 }
-
-/* Cortina */
-.curtail {
-
-}
-
-.curtail::after,
-.curtail::before {
-  content: "";
-  width: 1vw;
-  height: 1vh;
-  position: absolute;
-  background-color: var(--color-red-700);
-}
-
-.curtail::before {
-  left: 0;
-}
-
-.curtail::after {
-  right: 0;
-}
-
-
-.curtail-closed::after,
-.curtail-closed::before {
-  content: "";
-  width: 1vw;
-  height: 1vh;
-  position: absolute;
-  background-color: var(--color-primary);
-}
