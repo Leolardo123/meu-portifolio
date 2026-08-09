@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-(--color-theme) flex items-center justify-between h-17.75 p-10 gap-4 sticky top-0 z-10">
+    <header className="bg-(--color-theme) flex items-center justify-between h-17.75 p-10 gap-4 sticky top-0 z-999">
       {/* Logo */}
       <span className="uppercase text-[19px] font-bold order-1 md:order-1">
         Leoferstos
