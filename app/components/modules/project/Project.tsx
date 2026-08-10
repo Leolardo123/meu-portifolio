@@ -12,7 +12,10 @@ export default function Project() {
 
   const handleSelectCategory = (stack: string) => {
     setIsCurtainOpen(false);
-    setTimeout(() => {
+
+    let delaySelectedCategory = null;
+
+    delaySelectedCategory = setTimeout(() => {
       if (selectedCategory === stack) {
         setSelectedCategory(null);
       } else {
@@ -21,6 +24,8 @@ export default function Project() {
 
       setIsCurtainOpen(true);
     }, 1000);
+
+    delaySelectedCategory = null;
   };
 
   if (loading) {
@@ -67,20 +72,20 @@ export default function Project() {
             className="bg-(--color-theme) relative grid grid-cols-1 md:gap-1.25 gap-px sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
           >
             <AnimatePresence>
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 overflow-x-hidden">
                   <motion.div
                     key="modal-left"
                     animate={{ x: isCurtainOpen ? '-200%' : '0%'}}
                     initial={{ x: '-200%' }}
-                    transition={{ duration: 0.8, ease: "circIn" }}
-                    className="bg-secondary-1 absolute inset-0 w-1/2 z-2"
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="bg-primary absolute inset-0 w-1/2 z-2"
                   />
                   <motion.div
                     key="modal-right"
                     animate={{ x: isCurtainOpen ? '300%' : '100%'}}
                     initial={{ x: "300%" }}
-                    transition={{ duration: 0.8, ease: "circIn" }}
-                    className="bg-secondary-1 absolute inset-0 w-1/2 z-2"
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="bg-primary absolute inset-0 w-1/2 z-2"
                   />
                 </div>
             </AnimatePresence>
