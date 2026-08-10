@@ -3,6 +3,7 @@ import "../../../animation.css";
 import { motion, useSpring, useMotionValue, useTransform } from 'motion/react'
 interface ProjectProps {
   project: ProjectDTO;
+  
 }
 
 export default function ProjectItem(props: ProjectProps) {
@@ -69,14 +70,16 @@ export default function ProjectItem(props: ProjectProps) {
         <p className="max-h-24 line-clamp-3 text-[12px] mt-3">
           {project.description}
         </p>
-        <a
-          href={project.githubUrl || "https://github.com/Leolardo123"}
-          className="underline mt-3"
-        >
-          Ver repositório github
-        </a>
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl || "https://github.com/Leolardo123"}
+            className="underline mt-3"
+          >
+            Ver repositório github
+          </a>
+        )}
       </div>
-       <div className="corners-bottom absolute opacity-1 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="corners-bottom absolute opacity-1 group-hover:opacity-100 transition-opacity duration-300"></div>
     </motion.div>
   );
 }

@@ -5,8 +5,8 @@ export interface ProjectDTO {
   techs: string[];
   categories: string[];
   description: string;
-  image: string;
-  githubUrl: string;
-  isOwnProject: boolean;
-  updatedAt: string;
+  image?: string;
+  githubUrl?: string;
+  isOwnProject?: boolean;
+  updatedAt?: string;
 }
