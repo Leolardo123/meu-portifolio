@@ -17,7 +17,6 @@ export default function Project() {
       categoriesUnique.push(...notFoundCategories);
     });
 
-    console.log(projects, categoriesUnique)
     return categoriesUnique;
   }
 
