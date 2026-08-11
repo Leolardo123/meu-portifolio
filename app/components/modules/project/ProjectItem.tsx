@@ -60,11 +60,6 @@ export default function ProjectItem({
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
 
-    console.log({
-      x: x.get(),
-      y: y.get()
-    })
-
     x.set(xPct);
     y.set(yPct);
   };
