@@ -2,6 +2,7 @@ import { useGitRepositories } from "@/app/hooks/useGitRepositories";
 import ProjectDisplay from "./ProjectDisplay";
 import { projectParticipatedList } from "./data/projects.data";
 import { ProjectDTO } from "./Project.interface";
+import ProjectParticipated from "./ProjectParticipated";
 
 
 export default function Project() {
@@ -41,9 +42,8 @@ export default function Project() {
         className="bg-secondary-2 text-(--font-light) snap-start snap-always"
       >
         {/* PROJETOS QUE PARTICIPEI */}
-        <ProjectDisplay
+        <ProjectParticipated
           customColor="bg-secondary-2"
-          title="Projetos Que Participei"
           projects={projectParticipatedList}
           categories={getProjectsCategories(projectParticipatedList)}
           error={null}
