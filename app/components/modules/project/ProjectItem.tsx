@@ -1,13 +1,19 @@
 import { ProjectDTO } from "./Project.interface";
 import "../../../animation.css";
 import { motion, useSpring, useMotionValue, useTransform } from 'motion/react'
+import { twMerge } from "tailwind-merge";
+
 interface ProjectProps {
   project: ProjectDTO;
-  
+  customColor?: string;
 }
 
-export default function ProjectItem(props: ProjectProps) {
-  const project = props.project;
+export default function ProjectItem({
+  project,
+
+  /* STYLE */
+  customColor,
+}: ProjectProps) {
   const mainCategory = project.categories?.[0];
 
   const x = useMotionValue(0);
@@ -45,7 +51,7 @@ export default function ProjectItem(props: ProjectProps) {
 
   return (
     <motion.div
-      className="bg-primary h-64 p-7 hover:bg-black hover:text-white group corners-container"
+      className={twMerge("h-64 p-7 hover:bg-black hover:text-white group corners-container", customColor)}
       style={{
         rotateX,
         rotateY,

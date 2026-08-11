@@ -22,30 +22,35 @@ export default function Project() {
   }
 
   return (
-    <section
-      id="projects"
-      className="bg-primary text-(--font-dark) snap-start snap-always"
-    >
-      {/* PROJETOS PESSOAIS */}
-      <div>
+    <div>
+      <section
+        id="projects"
+        className="bg-primary text-(--font-dark) snap-start snap-always"
+      >
+        {/* PROJETOS PESSOAIS */}
         <ProjectDisplay
+          customColor="bg-primary"
           title="Projetos Pessoais"
           projects={projectList}
           categories={getProjectsCategories(projectList)}
           error={error}
           loading={loading}
         />
-      </div>
-      <div>
+      </section>
+      <section
+        id="projects-participated"
+        className="bg-secondary-2 text-(--font-light) snap-start snap-always"
+      >
         {/* PROJETOS QUE PARTICIPEI */}
         <ProjectDisplay
+          customColor="bg-secondary-2"
           title="Projetos Que Participei"
           projects={projectParticipatedList}
           categories={getProjectsCategories(projectParticipatedList)}
           error={null}
           loading={false}
         />
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

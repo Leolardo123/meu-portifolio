@@ -3,21 +3,31 @@ import { useEffect, useState } from "react";
 import PrimaryButton from "../../elements/primaryButton/PrimaryButton";
 import { AnimatePresence, motion } from "motion/react";
 import { ProjectDTO } from "./Project.interface";
+import { twMerge } from "tailwind-merge";
 
 interface ProjectDisplayProps {
   title: string;
+  description?: string;
   projects: ProjectDTO[];
   categories: string[];
   loading: boolean;
   error: Error | null;
+
+  className?: string;
+  customColor?: string;
 }
 
 export default function ProjectDisplay({
   title,
+  description,
   projects,
   categories,
   loading,
   error,
+
+  /* STYLE */
+  className = '',
+  customColor = '',
 }: ProjectDisplayProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isCurtainOpen, setIsCurtainOpen] = useState(true);
@@ -57,7 +67,10 @@ export default function ProjectDisplay({
   }
 
   return (
-    <div className="inner-section min-h-dvh">
+    <div
+      className={twMerge("inner-section min-h-dvh bg-primary", className , customColor)}
+      style={{ "--section-bg": "inherit" } as React.CSSProperties}
+    >
       <div className="flex flex-wrap gap-2 justify-between pb-3.25">
         <h3 className="section-subtitle">Projetos</h3>
         <h3 className="section-subtitle">
@@ -67,17 +80,18 @@ export default function ProjectDisplay({
       <div id="projects-display" className="flex flex-col gap-4">
         <h1 className="section-title">{title}</h1>
         <p className="section-paragraph">
-          Estes são alguns dos projetos que participei em experiência,
+          {description}
         </p>
         <div className="flex flex-wrap gap-4 pt-12.5 pb-12.5">
-          {categories && categories.map((category) => (
-            <PrimaryButton
-              key={category}
-              title={category}
-              onClick={() => handleSelectCategory(category)}
-              isActive={selectedCategory === category}
-            />
-          ))}
+          {categories &&
+            categories.map((category) => (
+              <PrimaryButton
+                key={category}
+                title={category}
+                onClick={() => handleSelectCategory(category)}
+                isActive={selectedCategory === category}
+              />
+            ))}
         </div>
         <div
           id="projects-made"
@@ -90,28 +104,35 @@ export default function ProjectDisplay({
                 animate={{ x: isCurtainOpen ? "-200%" : "0%" }}
                 initial={{ x: "-200%" }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0 w-1/2 z-2"
+                className={twMerge("absolute inset-0 w-1/2 z-2", customColor)}
               />
               <motion.div
                 key="modal-right"
                 animate={{ x: isCurtainOpen ? "300%" : "100%" }}
                 initial={{ x: "300%" }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0 w-1/2 z-2"
+                className={twMerge("absolute inset-0 w-1/2 z-2", customColor)}
               />
             </div>
           </AnimatePresence>
 
-          {projects && projects.map((project, index) => {
-            if (
-              selectedCategory &&
-              !project.categories.includes(selectedCategory)
-            ) {
-              return null;
-            }
+          {projects &&
+            projects.map((project, index) => {
+              if (
+                selectedCategory &&
+                !project.categories.includes(selectedCategory)
+              ) {
+                return null;
+              }
 
-            return <ProjectItem key={index} project={project} />;
-          })}
+              return (
+                <ProjectItem
+                  key={index}
+                  project={project}
+                  customColor={customColor}
+                />
+              );
+            })}
         </div>
       </div>
     </div>
