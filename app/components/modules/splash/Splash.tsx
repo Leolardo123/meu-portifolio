@@ -18,7 +18,7 @@ export default function Splash() {
   useEffect(() => {
     const splashTimeout = setTimeout(() => {
       setShowSplash(false);
-    }, 200);
+    }, 20);
 
     return () => clearTimeout(splashTimeout);
   }, []);
@@ -29,7 +29,7 @@ export default function Splash() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ ease: 'circIn', duration: 2, delay: 2 }}
+          transition={{ ease: 'backInOut', duration: 2, delay: 0.6 }}
           id="splash-main"
           className="bg-primary inset-0 fixed z-9999"
         >
@@ -48,7 +48,7 @@ export default function Splash() {
                   key={index}
                   className="bg-secondary-1 absolute rounded-full"
                   style={{
-                    width: 40,
+                    width: 45,
                     height: 45,
                   }}
                   initial={{
