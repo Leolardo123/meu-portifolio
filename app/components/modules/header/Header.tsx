@@ -76,12 +76,6 @@ export default function Header() {
         >
           {theme == "light-theme" ? "☀️" : "🌙"}
         </button>
-        <button
-          type="button"
-          className="text-[11px] font-bold uppercase rounded-3xl border p-2.25 hover:bg-secondary-1"
-        >
-          Pt-Br
-        </button>
         <span className="hidden lg:block md:hidden text-[11px] font-bold uppercase rounded-3xl border p-2.25">
           Open To Work
         </span>

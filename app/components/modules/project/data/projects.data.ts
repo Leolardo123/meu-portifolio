@@ -69,14 +69,14 @@ export const projectParticipatedList: ProjectParticipatedDTO[] = [
   {
     name: "Kaliga",
     categories: ["Mobilidade", "Geolocalização"],
-    techs: ["Strapi", "Node.js", "PostgreSQL"],
+    techs: ["Strapi", "Node.js", "PostgreSQL", "PostGIS", "Firebase"],
     description:
-      "Plataforma",
+      "Plataforma de mobilidade automotiva que fornece alertas em rota, avisos de rodízio de veículos por região e chat por proximidade.",
     role: "Desenvolvedor Backend",
     contribution: [
-      'Implementação de consultas geoespaciais com PostGIS e LineString/LineBuffer para identificar radares localizados ao longo das rotas dos usuários.',
-      'Utilização do QGIS para análise geoespacial e cadastro de municípios utilizados nas regras de alertas por região.',
-      'Implementação de chat baseado em proximidade utilizando Firebase e consultas geoespaciais.'
+      'Implementação de consultas geoespaciais com PostGIS (LineString e LineBuffer) para identificação de radares ao longo das rotas dos usuários.',
+      'Utilização do QGIS para análise geoespacial e cadastro de municípios aplicados nas regras de alertas regionais.',
+      'Desenvolvimento de chat por proximidade integrado ao Firebase com validação geoespacial.'
     ]
   },
 ];

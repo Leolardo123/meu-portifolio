@@ -12,7 +12,7 @@ export default function Modal({ children, className, onClose }: ModalProps) {
     <div className="fixed flex items-center justify-center w-full h-full top-[50%] left-[50%] translate-[-50%] z-999 shadow-2xl bg-[rgba(0,0,0,.5)]">
       <div
         className={twMerge(
-          "bg-primary relative p-8 min-h-2/4 w-[calc(100%-30px)] max-w-295 rounded-2xl",
+          "relative p-8 min-h-2/4 w-[calc(100%-30px)] max-w-295 rounded-2xl",
           className,
         )}
       >

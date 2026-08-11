@@ -136,19 +136,32 @@ export default function ProjectParticipated({
               );
             })}
         </div>
-        {selectedProject && (
-          <Modal
-            className="bg-secondary-2"
-            onClose={() => setSelectedProject(null)}
-          >
-            <h1 className="text-2xl font-bold pb-4">{selectedProject?.name}</h1>
-            {selectedProject?.contribution?.map((c, index) => (
-              <ul className="pb-2" key={index}>
-                * {c}
-              </ul>
-            ))}
-          </Modal>
-        )}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+              <Modal
+                className="bg-secondary-2 border border-secondary-3"
+                onClose={() => setSelectedProject(null)}
+              >
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-2xl font-bold">
+                    {selectedProject?.name}
+                  </h1>
+                  <p className="border border-black rounded-2xl p-4 text-primary w-fit">
+                  {selectedProject?.categories?.map((c) => c)?.join(' • ')}
+                  </p>
+                  <div>
+                    {selectedProject?.contribution?.map((c, index) => (
+                      <ul className="pb-2" key={index}>
+                        * {c}
+                      </ul>
+                    ))}
+                  </div>
+                </div>
+              </Modal>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
