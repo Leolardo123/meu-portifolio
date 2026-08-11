@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Splash() {
   const [showSplash, setShowSplash] = useState(true);
@@ -15,9 +15,13 @@ export default function Splash() {
     };
   });
 
-  setTimeout(() => {
-    setShowSplash(false);
-  }, 200);
+  useEffect(() => {
+    const splashTimeout = setTimeout(() => {
+      setShowSplash(false);
+    }, 200);
+
+    return () => clearTimeout(splashTimeout);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -35,8 +39,8 @@ export default function Splash() {
             </div>
 
             <motion.div animate={{ opacity: 0 }} transition={{ delay: 2 }}>
-              <h1 className="text-center font-bold">Leoferstos</h1>
-              <p>Desenvolvedor BackEnd</p>
+              <h1 className="text-center uppercase text-2xl font-bold">Leoferstos</h1>
+              <p className="text-xl">Desenvolvedor BackEnd</p>
             </motion.div>
             {particles.map((p, index) => {
               return (
@@ -44,8 +48,8 @@ export default function Splash() {
                   key={index}
                   className="bg-secondary-1 absolute rounded-full"
                   style={{
-                    width: 20,
-                    height: 20,
+                    width: 40,
+                    height: 45,
                   }}
                   initial={{
                     x: 0,
