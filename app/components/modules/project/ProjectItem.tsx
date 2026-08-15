@@ -99,9 +99,10 @@ export default function ProjectItem({
           </p>
         )}
       </div>
+              <p className="text-[11px]">{project.role}</p>
       <div className="card-project-description mt-3.5 text-[13px]">
         <p className="technologies-project truncate text-[10px]">
-          {project.techs.join(" * ")}
+          {project.technologies?.join(" * ")}
         </p>
         <p className="max-h-24 line-clamp-3 text-[12px] mt-3">
           {project.description}
