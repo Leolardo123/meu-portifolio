@@ -43,7 +43,7 @@ const randomizeProject = () => {
 
   return {
     name: "Placeholder",
-    techs: techsSelected,
+    technologies: techsSelected,
     categories: [],
     description: `Donec odio magna, lobortis id faucibus sit amet,
                         condimentum in odio. Maecenas porta, nibh eget facilisis
@@ -102,7 +102,7 @@ export function useGitRepositories() {
             return {
               name: repo.name,
               description: repo.description ?? "Sem descrição.",
-              techs: techs,
+              technologies: techs,
               categories: repo.topics,
               image: "/images/default-project.png",
               isOwnProject: true,
